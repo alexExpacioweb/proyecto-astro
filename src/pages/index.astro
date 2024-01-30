@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../utils/peticion';
+
+let titles = data.data.posts.nodes;
+
+console.log(titles);
+
+---
+
+<Layout title="Mi blog">
+    <div class="entradas">
+       {titles.map((title:any) => {
+            return <h1>{title.title}</h1>
+       })}
+    </div>
+</Layout>
+
+<style lang="scss">
+    .entradas {
+        max-width: 90%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        justify-items: center;
+        // padding-bottom: 4rem;
+
+        .entrada {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem;
+            border-radius: 20px;
+            transition: 0.2s;
+            -webkit-box-shadow: -5px 6px 23px -12px rgba(0,0,0,0.75);
+            -moz-box-shadow: -5px 6px 23px -12px rgba(0,0,0,0.75);
+            box-shadow: -5px 6px 23px -12px rgba(0,0,0,0.75);
+        }
+
+        .entrada:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+    }
+
+</style>
+
+
+
