@@ -1,0 +1,64 @@
+---
+
+import getResults from "../utils/peticion2";
+
+const data = await getResults();
+
+let posts = data.data.posts.nodes;
+
+---
+
+<section class="entradas-container">
+    {posts.map((post:any) => {
+        return <div class="entrada">
+                    <img src={post.featuredImage.node.mediaItemUrl} alt="entrada-image" />
+                    <div class="entrada-info">
+                        <h1>{post.title}</h1>
+                        <h1 set:html={post.content}></h1>
+                    </div>
+                </div>
+    })}
+
+    <!-- <script>
+        import getResults from "../utils/peticion2";
+
+        const data = await getResults();
+        let posts = data.data.posts.nodes;
+        console.log(posts);
+
+    </script> -->
+</section>
+
+<!-- ----------- -->
+
+<style>
+    .entradas-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: start;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 3rem;
+
+        .entrada {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 3rem;
+            padding: 1rem;
+            -webkit-box-shadow: -4px 4px 11px 0px rgba(168,168,168,1);
+            -moz-box-shadow: -4px 4px 11px 0px rgba(168,168,168,1);
+            box-shadow: -4px 4px 11px 0px rgba(168,168,168,1);
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+        }
+    }
+</style>
+
+

@@ -1,42 +1,18 @@
 ---
-import Semiblock from '../components/Semiblock.astro';
 import Layout from '../layouts/Layout.astro';
+import Entradas from '../components/Entradas.astro';
+
 ---
 
 <Layout title="Mi blog">
-    <section class="primera-seccion-home">
-        <div>
-            <p>carousel</p>
-        </div>
-        <div>
-            <p>imagenes</p>
-        </div>
-    </section>
-    <Semiblock wleft="45" wright="auto">
-        <div slot="left-block">
-                <h1 style="background-color: red;">Un Club EXCLUSIVO de empresarios y directivos que buscan nuevas formas de vender más, sin tener que estar persiguiendo clientes.</h1>
-                <ul>
-                    <li>Un lugar en el que compartir experiencias y aprender de las de otros empresarios con tu misma mentalidad. </li>
-                    <li>Un espacio creado para que los empresarios que quieran puedan mostrar sus habilidades y ganar visibilidad.</li>
-                    <li>Una comunidad en la que los empresarios y directivos pueden establecer relaciones personales y profesionales que les ayuden a hacer crecer sus negocios.</li>
-                    <li>Formaciones de alto impacto de la mano de grandes expertos en ventas, marketing, estrategia de negocio, finanzas, productividad, etc, aplicables directamente en tu negocio.</li>
-                    <li>Pero sobre todo <strong>un Club de PERSONAS, donde lo más importante son las relaciones humanas y el crecimiento profesional y personal, por delante de las transacciones comerciales.</strong></li>
-                </ul>
-        </div>
-  </SemiBlock>
-    <script>
-        
-import data from "../utils/peticion";
-console.log(data.data.eventos.nodes);
-    </script>
+    <main class="primera-seccion-home">
+        <Entradas client:load>
+    </main>
 </Layout>
 
 <style lang="scss">
     .primera-seccion-home {
         padding: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 
 </style>

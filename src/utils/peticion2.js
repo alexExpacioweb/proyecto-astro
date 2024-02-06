@@ -1,4 +1,4 @@
-const url = 'https://madridenvivo.com/';
+const url = 'https://desarrollobeta.es/prueba/';
 const userData = {
   user: 'expacioweb',
   pass: 'XKy0$o_n0N1X'
@@ -13,26 +13,20 @@ const getResults = async () => {
                 'Authorization': 'Basic ' + btoa(userData.user + ':' + userData.pass)
             },
             body: JSON.stringify({
-                query: `query NewQuery {
-                    eventos(first: 300) {
-                      nodes {
-                        destacado
-                        relacionConSala
-                        title
-                        featuredImage {
-                          node {
-                            mediaDetails {
-                              sizes {
-                                sourceUrl
-                              }
+                query: `query MyQuery {
+                    posts {
+                        nodes {
+                          title(format: RENDERED)
+                          content(format: RENDERED)
+                          featuredImage {
+                            node {
+                              mediaItemUrl
                             }
                           }
                         }
                       }
-                    }
                   }`
             }),
-            limit: 30,
            })
         const response = await fetchAPI.json();
         return response;
@@ -41,6 +35,4 @@ const getResults = async () => {
     }
 }
 
-const data = await getResults();
-
-export default data;
+export default getResults;
