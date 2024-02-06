@@ -20,7 +20,6 @@ const Entradas = () => {
     <div>
        {data.map((post) => {
         return <div className="entrada" key={post.title}>
-                    <img src={post.featuredImage.node.mediaItemUrl} alt="entrada-image" />
                     <div className="entrada-info">
                         <h1>{post.title}</h1>
                         <h1>post.content</h1>
