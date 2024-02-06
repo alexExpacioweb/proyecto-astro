@@ -1,7 +1,7 @@
-const url = 'https://desarrollobeta.es/prueba/';
+const url = 'https://madridenvivo.com/';
 const userData = {
   user: 'expacioweb',
-  pass: 'OYDBrJQyY3L38V2na9wT7trX'
+  pass: 'XKy0$o_n0N1X'
 };
 
 const getResults = async () => {
@@ -14,14 +14,26 @@ const getResults = async () => {
             },
             body: JSON.stringify({
                 query: `query NewQuery {
-                  posts {
-                    nodes {
-                      title
+                    eventos(first: 100) {
+                      nodes {
+                        destacado
+                        relacionConSala
+                        title
+                        featuredImage {
+                          node {
+                            mediaDetails {
+                              sizes {
+                                sourceUrl
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
-                  }
-                }
-                `
-            })})
+                  }`
+            }),
+            limit: 30,
+           })
         const response = await fetchAPI.json();
         return response;
     } catch (error) {

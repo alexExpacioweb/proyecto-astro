@@ -1,0 +1,21 @@
+--- 
+//Recojo las props enviadas a este componentes
+const {wleft,wright} = Astro.props;
+---
+<section class="ancho-limitado block-semiblock">
+    <div id="btn-block" class="contenido-semiblock">
+        <slot id="left-block-class" name="left-block"/>
+        <slot name="right-block"/>
+    </div>
+</section>
+<style>
+.block-semiblock{margin:25px auto; display:block;}
+.ancho-limitado{width:100%; max-width:1100px; display:block;}
+div.contenido-semiblock{display:flex; flex-direction: row; justify-content: space-between;}
+</style>
+<script is:inline>
+    const leftBlock = document.getElementById('left-block-class');
+    leftBlock.style.flexBasis = wleft;
+    leftBlock.style.backgroundColor = "red";
+    console.log(leftBlock);
+</script>
