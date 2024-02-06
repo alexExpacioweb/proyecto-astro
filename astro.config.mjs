@@ -6,5 +6,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-  site: 'https://prueba-crud-astro.netlify.app/'
+  site: 'https://prueba-crud-astro.netlify.app/',
+  output: 'server',
 });
